@@ -2,9 +2,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/",          "destination": "/index-v6.html" },
-    { "source": "/demo",      "destination": "/demo-v5.html" },
-    { "source": "/insights",  "destination": "/insights-v4.html" }
+    { "source": "/",          "destination": "/index-v6" },
+    { "source": "/demo",      "destination": "/demo-v5" },
+    { "source": "/insights",  "destination": "/insights-v4" }
   ],
   "headers": [
     {

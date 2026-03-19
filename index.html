@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voixin — AI-röstassistent för bilhandlare</title>
+  <meta name="description" content="Voixin ger din bilhandel en intelligent AI-röstassistent dygnet runt. Fordonssökning, verkstadsstatus och kundtjänst — allt via telefon.">
+  <meta property="og:title" content="Voixin — AI-röstassistent för bilhandlare">
+  <meta property="og:description" content="Ring och testa vår demo: 010-520 08 85">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter font -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { font-family: 'Inter', system-ui, sans-serif; }
+
+    html { scroll-behavior: smooth; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Subtle hero gradient */
+    .hero-bg {
+      background: linear-gradient(160deg, #eff6ff 0%, #f8fafc 50%, #faf5ff 100%);
+    }
+
+    /* Phone pulse animation */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.85); opacity: 1; }
+      70% { transform: scale(1.15); opacity: 0; }
+      100% { transform: scale(1.15); opacity: 0; }
+    }
+    .pulse-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 9999px;
+      background: #ea580c;
+      opacity: 0.25;
+      animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    /* Step connector */
+    .step-connector {
+      position: absolute;
+      top: 28px;
+      left: calc(50% + 28px);
+      width: calc(100% - 56px);
+      height: 2px;
+      background: linear-gradient(90deg, #dbeafe, #e9d5ff);
+    }
+
+    /* Nav link hover */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2563eb;
+      transition: width 0.2s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Card hover */
+    .feature-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
+    }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+  </style>
+
+  <script>
+    // ── i18n ────────────────────────────────────────────────────────────────
+    const TEXTS = {
+      sv: {
+        'nav.features':    'Funktioner',
+        'nav.how':         'Hur det fungerar',
+        'nav.demo':        'Demo',
+        'nav.contact':     'Kontakt',
+        'nav.cta':         'Boka demo',
+
+        'hero.badge':      'Ny teknik för svensk bilhandel',
+        'hero.title':      'Din bilhandel svarar alltid — dygnet runt',
+        'hero.subtitle':   'Voixin ger dig en intelligent AI-röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst via telefon — utan väntetid, utan miss.',
+        'hero.cta.demo':   'Ring och testa live',
+        'hero.cta.book':   'Boka presentation',
+        'hero.phone':      '010-520 08 85',
+        'hero.phone.hint': 'Testa Jessica — vår live-demo hos Caravanhallen',
+
+        'features.badge':  'Funktioner',
+        'features.title':  'Allt din kund kan tänkas fråga',
+        'features.sub':    'Jessica svarar direkt, hänvisar korrekt och loggar allt — utan att du behöver lyfta ett finger.',
+
+        'f1.title': 'Fordonssökning',
+        'f1.body':  'Kunden berättar vad de söker — Jessica hittar matchande fordon ur ditt lager i realtid och presenterar relevanta alternativ.',
+        'f2.title': 'Verkstadsstatus',
+        'f2.body':  'Kunden kan kolla status på sin bil, bekräfta bokat datum och få uppdateringar — utan att binda upp din personal.',
+        'f3.title': 'Kundtjänst 24/7',
+        'f3.body':  'Öppettider, vägbeskrivning, priser, finansiering — vanliga frågor besvaras direkt av AI utan väntemusik.',
+        'f4.title': 'Flerspråkig',
+        'f4.body':  'Jessica talar svenska och engelska flytande. Fler språk på begäran. Perfekt för mångsidiga kundgrupper.',
+
+        'how.badge':  'Hur det fungerar',
+        'how.title':  'Från signering till lansering på en vecka',
+        'how.sub':    'Vi sköter hela uppkopplingen. Du bidrar med data — vi levererar din röstassistent.',
+        'how.s1.num': '1',
+        'how.s1.title': 'Koppla din data',
+        'how.s1.body':  'Vi integrerar ditt affärssystem via en enkel export. Kund-, fordons- och verkstadsdata synkas automatiskt.',
+        'how.s2.num': '2',
+        'how.s2.title': 'Konfigurera AI',
+        'how.s2.body':  'Vi anpassar personligheten, kunskapsbasen och samtalsmönster utifrån din handels profil och varumärke.',
+        'how.s3.num': '3',
+        'how.s3.title': 'Gå live',
+        'how.s3.body':  'Ditt telefonnummer kopplas om. Från nu svarar Jessica på alla inkommande samtal — du ser allt i realtid.',
+
+        'demo.badge':    'Live demo',
+        'demo.title':    'Prova själv — ring nu',
+        'demo.sub':      'Ring vår demo direkt och prata med Jessica — en riktig röstassistent hos Caravanhallen i Södertälje. Fråga om ett fordon, boka verkstad, eller testa hennes kunskaper.',
+        'demo.phone':    '010-520 08 85',
+        'demo.label':    'Demo-nummer (Sverige)',
+        'demo.tip1.title': 'Fråga om lager',
+        'demo.tip1.body':  '"Har ni några husbilar under 400 000 kr?"',
+        'demo.tip2.title': 'Verkstadsstatus',
+        'demo.tip2.body':  '"Jag lämnade min husvagn förra veckan — hur ligger det till?"',
+        'demo.tip3.title': 'Praktisk info',
+        'demo.tip3.body':  '"Vilka öppettider har ni på lördagar?"',
+
+        'contact.badge':   'Kontakt',
+        'contact.title':   'Redo att ge din handels ett ben att stå på?',
+        'contact.sub':     'Vi arbetar med ett begränsat antal handlare i taget för att garantera kvalitet. Kontakta oss för att se om Voixin passar er.',
+        'contact.btn':     'Skicka ett meddelande',
+        'contact.email.label': 'Din e-post',
+        'contact.email.ph':   'namn@dinhandel.se',
+        'contact.msg.label':  'Meddelande',
+        'contact.msg.ph':     'Berätta lite om er handel och vad ni vill uppnå...',
+        'contact.send':       'Skicka',
+        'contact.or':         'eller maila direkt',
+
+        'footer.tagline': 'Röstassistenter för modern bilhandel.',
+        'footer.links':   'Länkar',
+        'footer.legal':   'Legal',
+        'footer.privacy': 'Integritetspolicy',
+        'footer.terms':   'Användarvillkor',
+        'footer.copy':    '© 2026 Voixin. Alla rättigheter förbehållna.',
+      },
+      en: {
+        'nav.features':    'Features',
+        'nav.how':         'How it works',
+        'nav.demo':        'Demo',
+        'nav.contact':     'Contact',
+        'nav.cta':         'Book demo',
+
+        'hero.badge':      'New technology for Swedish car dealers',
+        'hero.title':      'Your dealership always answers — around the clock',
+        'hero.subtitle':   'Voixin gives you an intelligent AI voice assistant that handles vehicle inquiries, service status and customer service by phone — no waiting, no missed calls.',
+        'hero.cta.demo':   'Call and test live',
+        'hero.cta.book':   'Book a presentation',
+        'hero.phone':      '010-520 08 85',
+        'hero.phone.hint': 'Talk to Jessica — our live demo at Caravanhallen',
+
+        'features.badge':  'Features',
+        'features.title':  'Everything your customer might ask',
+        'features.sub':    'Jessica answers instantly, routes correctly and logs everything — without you lifting a finger.',
+
+        'f1.title': 'Vehicle search',
+        'f1.body':  'The customer describes what they\'re looking for — Jessica finds matching vehicles from your inventory in real time and presents relevant options.',
+        'f2.title': 'Service status',
+        'f2.body':  'Customers can check the status of their vehicle, confirm booked dates and get updates — without tying up your staff.',
+        'f3.title': 'Customer service 24/7',
+        'f3.body':  'Opening hours, directions, prices, financing — common questions answered instantly by AI without hold music.',
+        'f4.title': 'Multilingual',
+        'f4.body':  'Jessica speaks Swedish and English fluently. More languages on request. Perfect for diverse customer groups.',
+
+        'how.badge':  'How it works',
+        'how.title':  'From signing to go-live in one week',
+        'how.sub':    'We handle the entire setup. You provide the data — we deliver your voice assistant.',
+        'how.s1.num': '1',
+        'how.s1.title': 'Connect your data',
+        'how.s1.body':  'We integrate your business system via a simple export. Customer, vehicle and service data syncs automatically.',
+        'how.s2.num': '2',
+        'how.s2.title': 'Configure AI',
+        'how.s2.body':  'We adapt the personality, knowledge base and conversation patterns to your dealership\'s profile and brand.',
+        'how.s3.num': '3',
+        'how.s3.title': 'Go live',
+        'how.s3.body':  'Your phone number is rerouted. From now on Jessica answers all incoming calls — you see everything in real time.',
+
+        'demo.badge':    'Live demo',
+        'demo.title':    'Try it yourself — call now',
+        'demo.sub':      'Call our demo directly and talk to Jessica — a real voice assistant at Caravanhallen in Södertälje. Ask about a vehicle, book service, or test her knowledge.',
+        'demo.phone':    '010-520 08 85',
+        'demo.label':    'Demo number (Sweden)',
+        'demo.tip1.title': 'Ask about inventory',
+        'demo.tip1.body':  '"Do you have any motorhomes under 400,000 SEK?"',
+        'demo.tip2.title': 'Service status',
+        'demo.tip2.body':  '"I dropped off my caravan last week — where does it stand?"',
+        'demo.tip3.title': 'Practical info',
+        'demo.tip3.body':  '"What are your opening hours on Saturdays?"',
+
+        'contact.badge':   'Contact',
+        'contact.title':   'Ready to give your dealership an edge?',
+        'contact.sub':     'We work with a limited number of dealers at a time to guarantee quality. Contact us to see if Voixin is a fit for you.',
+        'contact.btn':     'Send a message',
+        'contact.email.label': 'Your email',
+        'contact.email.ph':   'name@yourdealership.com',
+        'contact.msg.label':  'Message',
+        'contact.msg.ph':     'Tell us a bit about your dealership and what you want to achieve...',
+        'contact.send':       'Send',
+        'contact.or':         'or email directly',
+
+        'footer.tagline': 'Voice assistants for modern car dealers.',
+        'footer.links':   'Links',
+        'footer.legal':   'Legal',
+        'footer.privacy': 'Privacy policy',
+        'footer.terms':   'Terms of use',
+        'footer.copy':    '© 2026 Voixin. All rights reserved.',
+      }
+    };
+
+    let currentLang = localStorage.getItem('voixin_lang') || 'sv';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('voixin_lang', lang);
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const attr = el.getAttribute('data-i18n-attr');
+        const text = TEXTS[lang][key];
+        if (text === undefined) return;
+        if (attr) {
+          el.setAttribute(attr, text);
+        } else {
+          el.textContent = text;
+        }
+      });
+
+      // Update toggle buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('bg-blue-600', btn.dataset.lang === lang);
+        btn.classList.toggle('text-white', btn.dataset.lang === lang);
+        btn.classList.toggle('text-gray-500', btn.dataset.lang !== lang);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+
+      // Mobile menu
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      // Close on nav click
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      });
+
+      // Contact form (simple mailto fallback)
+      document.getElementById('contact-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const email = document.getElementById('contact-email').value;
+        const msg = document.getElementById('contact-msg').value;
+        window.location.href = `mailto:hello@voixin.com?subject=Intresse från ${email}&body=${encodeURIComponent(msg)}`;
+      });
+    });
+  </script>
+</head>
+
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- ── Navbar ──────────────────────────────────────────────────────────── -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-gray-900">Voixin</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600" data-i18n="nav.features">Funktioner</a>
+          <a href="#how" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600" data-i18n="nav.how">Hur det fungerar</a>
+          <a href="#demo" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600" data-i18n="nav.demo">Demo</a>
+          <a href="#contact" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600" data-i18n="nav.contact">Kontakt</a>
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <!-- Lang toggle -->
+          <div class="flex items-center rounded-full border border-gray-200 p-0.5 text-xs font-semibold">
+            <button class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="sv" onclick="setLanguage('sv')">SV</button>
+            <button class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en" onclick="setLanguage('en')">EN</button>
+          </div>
+          <!-- CTA -->
+          <a href="#contact" class="hidden md:inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors shadow-sm" data-i18n="nav.cta">Boka demo</a>
+          <!-- Mobile hamburger -->
+          <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
+        <a href="#features" class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.features">Funktioner</a>
+        <a href="#how" class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.how">Hur det fungerar</a>
+        <a href="#demo" class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.demo">Demo</a>
+        <a href="#contact" class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.contact">Kontakt</a>
+        <a href="#contact" class="mt-2 py-2.5 px-3 rounded-full bg-blue-600 text-white text-sm font-semibold text-center" data-i18n="nav.cta">Boka demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────────────────── -->
+  <section class="hero-bg py-20 sm:py-28 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+        <span data-i18n="hero.badge">Ny teknik för svensk bilhandel</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+        <span data-i18n="hero.title">Din bilhandel svarar alltid — dygnet runt</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero.subtitle">
+        Voixin ger dig en intelligent AI-röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst via telefon — utan väntetid, utan miss.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="tel:+46105200885" class="group flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg px-7 py-4 rounded-2xl shadow-lg hover:shadow-orange-200 transition-all">
+          <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <span data-i18n="hero.cta.demo">Ring och testa live</span>
+        </a>
+        <a href="#contact" class="flex items-center gap-2 border border-gray-300 hover:border-blue-400 hover:text-blue-700 text-gray-700 font-semibold text-base px-6 py-4 rounded-2xl transition-all">
+          <span data-i18n="hero.cta.book">Boka presentation</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Phone number callout -->
+      <div class="inline-block">
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-xs font-medium text-gray-400 tracking-wide uppercase" data-i18n="hero.phone.hint">Testa Jessica — vår live-demo hos Caravanhallen</span>
+          <a href="tel:+46105200885" class="text-3xl sm:text-4xl font-extrabold text-gray-900 hover:text-orange-500 transition-colors tracking-tight" data-i18n="hero.phone">010-520 08 85</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social proof strip -->
+    <div class="max-w-3xl mx-auto mt-16 grid grid-cols-3 gap-6 text-center">
+      <div>
+        <div class="text-2xl sm:text-3xl font-extrabold text-blue-600">24/7</div>
+        <div class="text-sm text-gray-500 mt-1">Alltid tillgänglig</div>
+      </div>
+      <div class="border-x border-gray-200">
+        <div class="text-2xl sm:text-3xl font-extrabold text-blue-600">&lt;1s</div>
+        <div class="text-sm text-gray-500 mt-1">Svarstid</div>
+      </div>
+      <div>
+        <div class="text-2xl sm:text-3xl font-extrabold text-blue-600">100%</div>
+        <div class="text-sm text-gray-500 mt-1">Loggade samtal</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ───────────────────────────────────────────────────────── -->
+  <section id="features" class="py-20 sm:py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-blue-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="features.badge">Funktioner</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="features.title">Allt din kund kan tänkas fråga</h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto" data-i18n="features.sub">Jessica svarar direkt, hänvisar korrekt och loggar allt — utan att du behöver lyfta ett finger.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Feature 1 -->
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="f1.title">Fordonssökning</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="f1.body">Kunden berättar vad de söker — Jessica hittar matchande fordon ur ditt lager i realtid och presenterar relevanta alternativ.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="f2.title">Verkstadsstatus</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="f2.body">Kunden kan kolla status på sin bil, bekräfta bokat datum och få uppdateringar — utan att binda upp din personal.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="f3.title">Kundtjänst 24/7</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="f3.body">Öppettider, vägbeskrivning, priser, finansiering — vanliga frågor besvaras direkt av AI utan väntemusik.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-orange-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="f4.title">Flerspråkig</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="f4.body">Jessica talar svenska och engelska flytande. Fler språk på begäran. Perfekt för mångsidiga kundgrupper.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ────────────────────────────────────────────────────── -->
+  <section id="how" class="py-20 sm:py-24 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 text-blue-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="how.badge">Hur det fungerar</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="how.title">Från signering till lansering på en vecka</h2>
+        <p class="text-gray-500 text-lg" data-i18n="how.sub">Vi sköter hela uppkopplingen. Du bidrar med data — vi levererar din röstassistent.</p>
+      </div>
+
+      <!-- Steps -->
+      <div class="grid md:grid-cols-3 gap-8 relative">
+
+        <!-- connector lines (desktop) -->
+        <div class="hidden md:block absolute top-7 left-[calc(33.33%+14px)] w-[calc(33.33%-28px)] h-0.5 bg-gradient-to-r from-blue-200 to-violet-200"></div>
+        <div class="hidden md:block absolute top-7 left-[calc(66.66%+14px)] w-[calc(33.33%-28px)] h-0.5 bg-gradient-to-r from-violet-200 to-purple-200"></div>
+
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-xl font-extrabold shadow-md mb-5">
+            <span data-i18n="how.s1.num">1</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="how.s1.title">Koppla din data</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="how.s1.body">Vi integrerar ditt affärssystem via en enkel export. Kund-, fordons- och verkstadsdata synkas automatiskt.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center text-white text-xl font-extrabold shadow-md mb-5">
+            <span data-i18n="how.s2.num">2</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="how.s2.title">Konfigurera AI</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="how.s2.body">Vi anpassar personligheten, kunskapsbasen och samtalsmönster utifrån din handels profil och varumärke.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white text-xl font-extrabold shadow-md mb-5">
+            <span data-i18n="how.s3.num">3</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2" data-i18n="how.s3.title">Gå live</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="how.s3.body">Ditt telefonnummer kopplas om. Från nu svarar Jessica på alla inkommande samtal — du ser allt i realtid.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Demo ───────────────────────────────────────────────────────────── -->
+  <section id="demo" class="py-20 sm:py-28 px-4 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+
+      <div class="inline-flex items-center gap-2 text-orange-600 text-xs font-semibold uppercase tracking-widest mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+        <span data-i18n="demo.badge">Live demo</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="demo.title">Prova själv — ring nu</h2>
+      <p class="text-gray-500 text-lg mb-12 max-w-xl mx-auto" data-i18n="demo.sub">Ring vår demo direkt och prata med Jessica — en riktig röstassistent hos Caravanhallen i Södertälje. Fråga om ett fordon, boka verkstad, eller testa hennes kunskaper.</p>
+
+      <!-- Big phone CTA -->
+      <a href="tel:+46105200885" class="group inline-flex flex-col items-center gap-3 mb-14">
+        <div class="relative">
+          <span class="pulse-ring"></span>
+          <div class="relative w-20 h-20 rounded-full bg-orange-500 group-hover:bg-orange-600 transition-colors flex items-center justify-center shadow-xl">
+            <svg class="w-9 h-9 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight" data-i18n="demo.phone">010-520 08 85</div>
+          <div class="text-sm text-gray-400 mt-1 font-medium" data-i18n="demo.label">Demo-nummer (Sverige)</div>
+        </div>
+      </a>
+
+      <!-- Tips -->
+      <div class="grid sm:grid-cols-3 gap-4 text-left">
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-4">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-1.5" data-i18n="demo.tip1.title">Fråga om lager</div>
+          <div class="text-sm text-gray-600 italic" data-i18n="demo.tip1.body">"Har ni några husbilar under 400 000 kr?"</div>
+        </div>
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-4">
+          <div class="text-xs font-bold text-violet-600 uppercase tracking-wide mb-1.5" data-i18n="demo.tip2.title">Verkstadsstatus</div>
+          <div class="text-sm text-gray-600 italic" data-i18n="demo.tip2.body">"Jag lämnade min husvagn förra veckan — hur ligger det till?"</div>
+        </div>
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-4">
+          <div class="text-xs font-bold text-emerald-600 uppercase tracking-wide mb-1.5" data-i18n="demo.tip3.title">Praktisk info</div>
+          <div class="text-sm text-gray-600 italic" data-i18n="demo.tip3.body">"Vilka öppettider har ni på lördagar?"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ─────────────────────────────────────────────────────────── -->
+  <section id="contact" class="py-20 sm:py-24 px-4 bg-gray-50">
+    <div class="max-w-xl mx-auto">
+
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 text-blue-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="contact.badge">Kontakt</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3" data-i18n="contact.title">Redo att ge din handels ett ben att stå på?</h2>
+        <p class="text-gray-500 text-base" data-i18n="contact.sub">Vi arbetar med ett begränsat antal handlare i taget för att garantera kvalitet. Kontakta oss för att se om Voixin passar er.</p>
+      </div>
+
+      <form id="contact-form" class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm space-y-5">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5" data-i18n="contact.email.label">Din e-post</label>
+          <input id="contact-email" type="email" required
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition"
+            data-i18n="contact.email.ph" data-i18n-attr="placeholder"
+            placeholder="namn@dinhandel.se">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1.5" data-i18n="contact.msg.label">Meddelande</label>
+          <textarea id="contact-msg" rows="4" required
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition resize-none"
+            data-i18n="contact.msg.ph" data-i18n-attr="placeholder"
+            placeholder="Berätta lite om er handel och vad ni vill uppnå..."></textarea>
+        </div>
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-sm transition-colors shadow-sm"
+          data-i18n="contact.send">Skicka</button>
+      </form>
+
+      <p class="text-center text-sm text-gray-400 mt-5">
+        <span data-i18n="contact.or">eller maila direkt</span> —
+        <a href="mailto:hello@voixin.com" class="text-blue-600 hover:underline font-medium">hello@voixin.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-8">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <span class="text-white font-bold text-lg">Voixin</span>
+        </div>
+        <p class="text-sm leading-relaxed" data-i18n="footer.tagline">Röstassistenter för modern bilhandel.</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <div class="text-white font-semibold text-sm mb-3" data-i18n="footer.links">Länkar</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#features" class="hover:text-white transition-colors" data-i18n="nav.features">Funktioner</a></li>
+          <li><a href="#how" class="hover:text-white transition-colors" data-i18n="nav.how">Hur det fungerar</a></li>
+          <li><a href="#demo" class="hover:text-white transition-colors" data-i18n="nav.demo">Demo</a></li>
+          <li><a href="#contact" class="hover:text-white transition-colors" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <div class="text-white font-semibold text-sm mb-3" data-i18n="footer.legal">Legal</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.privacy">Integritetspolicy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.terms">Användarvillkor</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-gray-800 text-xs text-center" data-i18n="footer.copy">
+      © 2026 Voixin. Alla rättigheter förbehållna.
+    </div>
+  </footer>
+
+</body>
+</html>

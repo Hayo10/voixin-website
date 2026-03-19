@@ -1,20 +1,5 @@
 User-agent: *
 Allow: /
-
-Disallow: /index-v*.html
-Disallow: /demo-v*.html
-Disallow: /insights-v*.html
-Disallow: /insights-v3.html
-Disallow: /insights-v2.html
-Disallow: /insights.html
-Disallow: /demo-v4.html
-Disallow: /demo-v3.html
-Disallow: /demo-v2.html
-Disallow: /demo.html
-Disallow: /index-v5.html
-Disallow: /index-v4.html
-Disallow: /index-v3.html
-Disallow: /index-v2.html
-Disallow: /index.html
+Disallow: /*-v*.html
 
 Sitemap: https://voixin.com/sitemap.xml

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /*-v*.html
 
-Sitemap: https://voixin.com/sitemap.xml
+Sitemap: https://voxlor.com/sitemap.xml

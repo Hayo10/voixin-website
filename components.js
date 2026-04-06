@@ -12,7 +12,7 @@ const COMMON_TEXTS = {
     'nav.insights':  'Insikter',
     'nav.case':      'Kundcase',
     'nav.cta':       'Kontakta oss',
-    'footer.tagline':'Jessica, din AI-röstassistent — powered by Voxlor.',
+    'footer.tagline':'Jessica, din AI-röstassistent och telefonväxel — powered by Voxlor.',
     'footer.links':  'Länkar',
     'footer.legal':  'Legal',
     'footer.privacy':'Integritetspolicy',
@@ -28,7 +28,7 @@ const COMMON_TEXTS = {
     'nav.insights':  'Insights',
     'nav.case':      'Case study',
     'nav.cta':       'Contact us',
-    'footer.tagline':'Jessica, your AI voice assistant — powered by Voxlor.',
+    'footer.tagline':'Jessica, your AI voice assistant and switchboard — powered by Voxlor.',
     'footer.links':  'Links',
     'footer.legal':  'Legal',
     'footer.privacy':'Privacy policy',
@@ -133,7 +133,7 @@ function initComponents(activePage) {
              onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <span class="hidden text-xl font-black gradient-text">Voxlor</span>
       </a>
-      <p class="text-sm leading-relaxed" data-i18n="footer.tagline">Jessica, din AI-röstassistent — powered by Voxlor.</p>
+      <p class="text-sm leading-relaxed" data-i18n="footer.tagline">Jessica, din AI-röstassistent och telefonväxel — powered by Voxlor.</p>
     </div>
 
     <!-- Links -->

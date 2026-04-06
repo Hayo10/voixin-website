@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
@@ -10,12 +10,15 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="logo/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo/favicon-16x16.png">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared nav + footer -->
+  <script src="/components.js"></script>
 
   <!-- Inter font -->
   <style>
@@ -78,14 +81,6 @@
   <script>
     const TEXTS = {
       sv: {
-        'nav.features':  'Funktioner',
-        'nav.how':       'Hur det fungerar',
-        'nav.pricing':   'Priser',
-        'nav.contact':   'Kontakt',
-        'nav.demo':      'Demo',
-        'nav.insights':  'Insikter',
-        'nav.cta':       'Kontakta oss',
-
         'hero.badge':    'Affärsintelligens från varje samtal',
         'hero.title':    'Jessica pratar — Voxlor ger dig insikterna',
         'hero.sub':      'Varje samtal loggas, klassificeras och analyseras automatiskt. Du får live-dashboards, dagliga rapporter och lead-identifiering — utan att lyfta ett finger.',
@@ -159,23 +154,8 @@
         'cta.book':      'Boka presentation',
         'cta.call':      'Ring demo nu',
         'cta.back':      'Tillbaka till startsidan',
-
-        'footer.tagline': 'Jessica, din AI-röstassistent — powered by Voxlor.',
-        'footer.links':   'Länkar',
-        'footer.legal':   'Legal',
-        'footer.privacy': 'Integritetspolicy',
-        'footer.terms':   'Användarvillkor',
-        'footer.copy':    '© 2026 Voxlor. Alla rättigheter förbehållna.',
       },
       en: {
-        'nav.features':  'Features',
-        'nav.how':       'How it works',
-        'nav.pricing':   'Pricing',
-        'nav.contact':   'Contact',
-        'nav.demo':      'Demo',
-        'nav.insights':  'Insights',
-        'nav.cta':       'Contact us',
-
         'hero.badge':    'Business intelligence from every call',
         'hero.title':    'Jessica talks — Voxlor gives you the insights',
         'hero.sub':      'Every call is logged, classified and analysed automatically. You get live dashboards, daily reports and lead identification — without lifting a finger.',
@@ -249,13 +229,6 @@
         'cta.book':      'Book a presentation',
         'cta.call':      'Call demo now',
         'cta.back':      'Back to home',
-
-        'footer.tagline': 'Jessica, your AI voice assistant — powered by Voxlor.',
-        'footer.links':   'Links',
-        'footer.legal':   'Legal',
-        'footer.privacy': 'Privacy policy',
-        'footer.terms':   'Terms of use',
-        'footer.copy':    '© 2026 Voxlor. All rights reserved.',
       }
     };
 
@@ -288,15 +261,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      initComponents('insights');
       setLanguage(currentLang);
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-      });
-      mobileMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-      });
     });
   </script>
 </head>
@@ -304,52 +270,7 @@
 <body class="bg-white text-gray-900 antialiased">
 
   <!-- ── 01 Navigation ───────────────────────────────────────────────────── -->
-  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-
-        <a href="/" class="flex items-center">
-          <img src="logo/Voxlor-logo-1.png" alt="Voxlor" class="h-8 w-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <span class="hidden items-center gap-2 text-xl font-black tracking-tight">
-            <span class="gradient-text">Voxlor</span>
-          </span>
-        </a>
-
-        <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="/"  class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.features">Funktioner</a>
-          <a href="/demo"            class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.demo">Demo</a>
-          <a href="/insights"        class="nav-link active text-sm font-semibold gradient-text" data-i18n="nav.insights">Insikter</a>
-          <a href="/"   class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.pricing">Priser</a>
-        </div>
-
-        <!-- Right: lang toggle + CTA + hamburger -->
-        <div class="flex items-center gap-3">
-          <div class="flex items-center bg-gray-100 rounded-full p-0.5 text-xs font-semibold">
-            <button class="lang-btn px-2.5 py-1 rounded-full transition-all" data-lang="sv" onclick="setLanguage('sv')">SV</button>
-            <button class="lang-btn px-2.5 py-1 rounded-full transition-all" data-lang="en" onclick="setLanguage('en')">EN</button>
-          </div>
-          <a href="/" class="hidden md:inline-flex btn-gradient text-white text-sm font-semibold px-4 py-2 rounded-full shadow-sm" data-i18n="nav.cta">Kontakta oss</a>
-          <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
-            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
-        <a href="/"  class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.features">Funktioner</a>
-        <a href="/demo"            class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.demo">Demo</a>
-        <a href="/insights"        class="py-2.5 px-3 rounded-lg text-sm font-semibold gradient-text" data-i18n="nav.insights">Insikter</a>
-        <a href="/"   class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.pricing">Priser</a>
-        <a href="/"   class="mt-2 py-2.5 px-3 rounded-full btn-gradient text-white text-sm font-semibold text-center" data-i18n="nav.cta">Kontakta oss</a>
-      </div>
-    </div>
-  </nav>
+  <div id="site-nav"></div>
 
   <!-- ── 02 Hero ─────────────────────────────────────────────────────────── -->
   <section class="hero-bg py-20 sm:py-28 px-4">
@@ -361,7 +282,7 @@
       </div>
 
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight mb-6">
-        <span data-i18n="hero.title">Jessica ger dig mer än svar —<br>hon ger dig insikter</span>
+        <span data-i18n="hero.title">Jessica pratar — Voxlor ger dig insikterna</span>
       </h1>
 
       <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed" data-i18n="hero.sub">
@@ -609,7 +530,9 @@
       </blockquote>
 
       <div class="flex items-center justify-center gap-4">
-        <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white font-bold text-base flex-shrink-0">OL</div>
+        <img src="/pictures/OscarLindgren_TJ067-400h.webp"
+             alt="Oskar Lindgren"
+             class="w-12 h-12 rounded-full object-cover object-top flex-shrink-0">
         <div class="text-left">
           <div class="text-white font-bold text-base" data-i18n="quote.author">Oskar Lindgren</div>
           <div class="text-gray-400 text-sm" data-i18n="quote.role">Försäljningschef, Caravanhallen</div>
@@ -627,7 +550,7 @@
       <p class="text-white/70 text-lg mb-10" data-i18n="cta.sub">Boka en presentation så visar vi hur Jessica förvandlar dina samtal till affärsintelligens.</p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-        <a href="mailto:hello@Voxlor.com" class="flex items-center gap-2 bg-white text-gray-900 font-bold px-8 py-4 rounded-2xl shadow-xl hover:opacity-90 transition-opacity text-base">
+        <a href="mailto:hello@voxlor.com" class="flex items-center gap-2 bg-white text-gray-900 font-bold px-8 py-4 rounded-2xl shadow-xl hover:opacity-90 transition-opacity text-base">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
           </svg>
@@ -647,48 +570,7 @@
   </section>
 
   <!-- ── 09 Footer ────────────────────────────────────────────────────────── -->
-  <footer class="bg-gray-950 text-gray-400 py-14 px-4">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-10">
-
-        <!-- Brand -->
-        <div>
-          <a href="/" class="flex items-center mb-3">
-            <img src="logo/Voxlor-logo-3.png" alt="Voxlor" class="h-7 w-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="hidden text-xl font-black gradient-text">Voxlor</span>
-          </a>
-          <p class="text-sm leading-relaxed" data-i18n="footer.tagline">Jessica, din AI-röstassistent — powered by Voxlor.</p>
-        </div>
-
-        <!-- Links -->
-        <div>
-          <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3" data-i18n="footer.links">Länkar</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/" class="hover:text-white transition-colors" data-i18n="nav.features">Funktioner</a></li>
-            <li><a href="/"      class="hover:text-white transition-colors" data-i18n="nav.how">Hur det fungerar</a></li>
-            <li><a href="/"  class="hover:text-white transition-colors" data-i18n="nav.pricing">Priser</a></li>
-            <li><a href="/"  class="hover:text-white transition-colors" data-i18n="nav.contact">Kontakt</a></li>
-            <li><a href="/demo"           class="hover:text-white transition-colors" data-i18n="nav.demo">Demo</a></li>
-            <li><a href="/insights"       class="hover:text-white transition-colors gradient-text font-semibold" data-i18n="nav.insights">Insikter</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal -->
-        <div>
-          <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3" data-i18n="footer.legal">Legal</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.privacy">Integritetspolicy</a></li>
-            <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.terms">Användarvillkor</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="pt-6 border-t border-gray-800 text-xs text-center" data-i18n="footer.copy">
-        © 2026 Voxlor. Alla rättigheter förbehållna.
-      </div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voixin — Jessica, AI-röstassistent för fordonsbranschen</title>
-  <meta name="description" content="Voixin ger din handel en intelligent AI-röstassistent dygnet runt. Fordonssökning, verkstadsstatus och kundtjänst — allt via telefon. Ring demo: 010-520 08 85">
-  <meta property="og:title" content="Voixin — AI-röstassistent för fordonsbranschen">
+  <title>Voxlor — Jessica, AI-röstassistent för fordonsbranschen</title>
+  <meta name="description" content="Voxlor ger din handel en intelligent AI-röstassistent dygnet runt. Fordonssökning, verkstadsstatus och kundtjänst — allt via telefon. Ring demo: 010-520 08 85">
+  <meta property="og:title" content="Voxlor — AI-röstassistent för fordonsbranschen">
   <meta property="og:description" content="Ring och testa vår demo: 010-520 08 85">
   <meta property="og:type" content="website">
 
@@ -16,6 +16,9 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Shared nav + footer -->
+  <script src="components.js"></script>
 
   <!-- Inter font -->
   <style>
@@ -119,12 +122,13 @@
         'nav.pricing':   'Priser',
         'nav.contact':   'Kontakt',
         'nav.demo':      'Demo',
+        'nav.case':      'Kundcase',
         'nav.cta':       'Kontakta oss',
 
         // Hero
         'hero.badge':    'Live AI-röstassistent för fordonsbranschen',
         'hero.title':    'AI som svarar i telefon — så att du kan fokusera på att sälja',
-        'hero.subtitle': 'Voixin ger din handel Jessica — en intelligent röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst dygnet runt — utan väntetid, utan missade affärer.',
+        'hero.subtitle': 'Voxlor ger din handel Jessica — en intelligent röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst dygnet runt — utan väntetid, utan missade affärer.',
         'hero.cta.demo': 'Ring och testa live',
         'hero.cta.book': 'Boka presentation',
         'hero.phone.hint': 'Testa Jessica — live demo med realistiska data',
@@ -168,7 +172,7 @@
 
         // Caravanhallen case
         'case.badge':    'Kundcase',
-        'case.title':    'Se hur Caravanhallen använder Voixin',
+        'case.title':    'Se hur Caravanhallen använder Voxlor',
         'case.body':     'Caravanhallen är Skandinaviens ledande husbilshandlare med anläggningar i Södertälje och Haninge. De kopplade sitt affärssystem direkt till Jessica — som nu svarar på alla inkommande samtal dygnet runt.',
         'case.kpi1':     '10 800+',
         'case.kpi1sub':  'kunder synkade',
@@ -180,11 +184,12 @@
         'case.quote':    '"Innan Jessica hade vi ingen aning om hur många samtal vi missade efter stängning. Nu ser vi det svart på vitt — och rapporterna varje morgon visar exakt vilka kunder vi borde ringa tillbaka."',
         'case.quote.author': 'Oskar Lindgren',
         'case.quote.role':   'Försäljningschef, Caravanhallen',
+        'case.caseLink': 'Läs hela kundcaset →',
 
         // How it works
-        'how.badge':       'Hur Voixin fungerar',
+        'how.badge':       'Hur Voxlor fungerar',
         'how.title':       'Från signering till lansering på en vecka',
-        'how.sub':         'Voixin sköter hela uppkopplingen. Du bidrar med data — vi levererar din röstassistent.',
+        'how.sub':         'Voxlor sköter hela uppkopplingen. Du bidrar med data — vi levererar din röstassistent.',
         'how.s1.num':      '1',
         'how.s1.title':    'Koppla din data',
         'how.s1.body':     'Vi integrerar ditt affärssystem via en enkel export. Kund-, fordons- och verkstadsdata synkas automatiskt.',
@@ -245,7 +250,7 @@
         'cta.sub':    'Ring och testa Jessica direkt — eller boka en presentation så visar vi hur det fungerar för just er handel.',
         'cta.demo':   'Ring demo nu',
         'cta.book':   'Boka presentation',
-        'cta.email':  'hello@voixin.com',
+        'cta.email':  'hello@Voxlor.com',
 
         // Contact section
         'contact.title':         'Redo att komma igång?',
@@ -258,7 +263,7 @@
         'contact.call.cta':      'Ring 010-520 08 85',
         'contact.direct.title':  'Skriv direkt',
         'contact.direct.body':   'Maila oss när som helst.',
-        'contact.email':         'hello@voixin.com',
+        'contact.email':         'hello@Voxlor.com',
 
         // Insights section
         'nav.insights':   'Insikter',
@@ -277,12 +282,12 @@
         'insights.cta':   'Utforska alla insikter Jessica genererar →',
 
         // Footer
-        'footer.tagline': 'Jessica, din AI-röstassistent — powered by Voixin.',
+        'footer.tagline': 'Jessica, din AI-röstassistent — powered by Voxlor.',
         'footer.links':   'Länkar',
         'footer.legal':   'Legal',
         'footer.privacy': 'Integritetspolicy',
         'footer.terms':   'Användarvillkor',
-        'footer.copy':    '© 2026 Voixin. Alla rättigheter förbehållna.',
+        'footer.copy':    '© 2026 Voxlor. Alla rättigheter förbehållna.',
       },
       en: {
         // Nav
@@ -291,12 +296,13 @@
         'nav.pricing':   'Pricing',
         'nav.contact':   'Contact',
         'nav.demo':      'Demo',
+        'nav.case':      'Case study',
         'nav.cta':       'Contact us',
 
         // Hero
         'hero.badge':    'Live AI voice assistant for the vehicle industry',
         'hero.title':    'AI that answers your phones — so you can focus on selling',
-        'hero.subtitle': 'Voixin gives your dealership Jessica — an intelligent voice assistant that handles vehicle inquiries, service status and customer support around the clock — no waiting, no missed deals.',
+        'hero.subtitle': 'Voxlor gives your dealership Jessica — an intelligent voice assistant that handles vehicle inquiries, service status and customer support around the clock — no waiting, no missed deals.',
         'hero.cta.demo': 'Call and test live',
         'hero.cta.book': 'Book a presentation',
         'hero.phone.hint': 'Talk to Jessica — live demo with realistic data',
@@ -340,7 +346,7 @@
 
         // Caravanhallen case
         'case.badge':    'Customer case',
-        'case.title':    'See how Caravanhallen uses Voixin',
+        'case.title':    'See how Caravanhallen uses Voxlor',
         'case.body':     'Caravanhallen is Scandinavia\'s leading motorhome and caravan dealer with locations in Södertälje and Haninge. They connected their business system directly to Jessica — who now handles all incoming calls around the clock.',
         'case.kpi1':     '10,800+',
         'case.kpi1sub':  'customers synced',
@@ -352,11 +358,12 @@
         'case.quote':    '"Before Jessica, we had no idea how many calls we were missing after closing. Now we see it in black and white — and the morning reports show exactly which customers we should call back."',
         'case.quote.author': 'Oskar Lindgren',
         'case.quote.role':   'Sales Manager, Caravanhallen',
+        'case.caseLink': 'Read the full case study →',
 
         // How it works
-        'how.badge':       'How Voixin works',
+        'how.badge':       'How Voxlor works',
         'how.title':       'From signing to go-live in one week',
-        'how.sub':         'Voixin handles the entire setup. You provide the data — we deliver your voice assistant.',
+        'how.sub':         'Voxlor handles the entire setup. You provide the data — we deliver your voice assistant.',
         'how.s1.num':      '1',
         'how.s1.title':    'Connect your data',
         'how.s1.body':     'We integrate your business system via a simple export. Customer, vehicle and service data syncs automatically.',
@@ -417,7 +424,7 @@
         'cta.sub':    'Call and test Jessica directly — or book a presentation and we\'ll show you how it works for your dealership.',
         'cta.demo':   'Call demo now',
         'cta.book':   'Book a presentation',
-        'cta.email':  'hello@voixin.com',
+        'cta.email':  'hello@Voxlor.com',
 
         // Contact section
         'contact.title':         'Ready to get started?',
@@ -430,7 +437,7 @@
         'contact.call.cta':      'Call 010-520 08 85',
         'contact.direct.title':  'Write directly',
         'contact.direct.body':   'Email us anytime.',
-        'contact.email':         'hello@voixin.com',
+        'contact.email':         'hello@Voxlor.com',
 
         // Insights section
         'nav.insights':   'Insights',
@@ -449,20 +456,20 @@
         'insights.cta':   'Explore all the insights Jessica generates →',
 
         // Footer
-        'footer.tagline': 'Jessica, your AI voice assistant — powered by Voixin.',
+        'footer.tagline': 'Jessica, your AI voice assistant — powered by Voxlor.',
         'footer.links':   'Links',
         'footer.legal':   'Legal',
         'footer.privacy': 'Privacy policy',
         'footer.terms':   'Terms of use',
-        'footer.copy':    '© 2026 Voixin. All rights reserved.',
+        'footer.copy':    '© 2026 Voxlor. All rights reserved.',
       }
     };
 
-    let currentLang = localStorage.getItem('voixin_lang') || 'sv';
+    let currentLang = localStorage.getItem('Voxlor_lang') || 'sv';
 
     function setLanguage(lang) {
       currentLang = lang;
-      localStorage.setItem('voixin_lang', lang);
+      localStorage.setItem('Voxlor_lang', lang);
       document.documentElement.lang = lang;
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -487,71 +494,15 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      initComponents('home');
       setLanguage(currentLang);
-
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-      });
-      mobileMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-      });
     });
   </script>
 </head>
 
 <body class="bg-white text-gray-900 antialiased">
 
-  <!-- ── 01 Navigation ───────────────────────────────────────────────────── -->
-  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-
-        <!-- Logo image -->
-        <a href="#" class="flex items-center">
-          <img src="logo/Voixin-logo-transp-1.png" alt="Voixin" class="h-8 w-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <!-- Fallback text logo -->
-          <span class="hidden items-center gap-2 text-xl font-black tracking-tight">
-            <span class="gradient-text">Voixin</span>
-          </span>
-        </a>
-
-        <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#features"        class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.features">Funktioner</a>
-          <a href="demo-v5.html"     class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.demo">Demo</a>
-          <a href="insights-v4.html" class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.insights">Insikter</a>
-          <a href="#pricing"         class="nav-link text-sm font-medium text-gray-600 hover:text-gray-900" data-i18n="nav.pricing">Priser</a>
-        </div>
-
-        <!-- Right: lang toggle + CTA + hamburger -->
-        <div class="flex items-center gap-3">
-          <div class="flex items-center bg-gray-100 rounded-full p-0.5 text-xs font-semibold">
-            <button class="lang-btn px-2.5 py-1 rounded-full transition-all" data-lang="sv" onclick="setLanguage('sv')">SV</button>
-            <button class="lang-btn px-2.5 py-1 rounded-full transition-all" data-lang="en" onclick="setLanguage('en')">EN</button>
-          </div>
-          <a href="#contact" class="hidden md:inline-flex btn-gradient text-white text-sm font-semibold px-4 py-2 rounded-full shadow-sm" data-i18n="nav.cta">Kontakta oss</a>
-          <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
-            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
-        <a href="#features"        class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.features">Funktioner</a>
-        <a href="demo-v5.html"     class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.demo">Demo</a>
-        <a href="insights-v4.html" class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.insights">Insikter</a>
-        <a href="#pricing"         class="py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50" data-i18n="nav.pricing">Priser</a>
-        <a href="#contact"         class="mt-2 py-2.5 px-3 rounded-full btn-gradient text-white text-sm font-semibold text-center" data-i18n="nav.cta">Kontakta oss</a>
-      </div>
-    </div>
-  </nav>
+  <div id="site-nav"></div>
 
   <!-- ── 02 Hero ─────────────────────────────────────────────────────────── -->
   <section class="hero-bg py-20 sm:py-28 px-4">
@@ -570,7 +521,7 @@
 
       <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero.subtitle">
-        Voixin ger din handel en intelligent röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst dygnet runt — utan väntetid, utan missade affärer.
+        Voxlor ger din handel en intelligent röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst dygnet runt — utan väntetid, utan missade affärer.
       </p>
 
       <!-- CTAs -->
@@ -724,7 +675,7 @@
 
       <!-- Demo CTA -->
       <div class="text-center mt-12">
-        <a href="demo-v5.html" class="inline-flex items-center gap-2 btn-gradient text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:opacity-90 transition-opacity" data-i18n="features.demoLink">
+        <a href="/demo" class="inline-flex items-center gap-2 btn-gradient text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:opacity-90 transition-opacity" data-i18n="features.demoLink">
           Utforska allt Jessica kan — se demoguiden →
         </a>
       </div>
@@ -736,10 +687,21 @@
   <section class="dark-gradient py-20 sm:py-24 px-4">
     <div class="max-w-5xl mx-auto">
 
-      <div class="text-center mb-12">
+      <div class="text-center mb-10">
+        <!-- Caravanhallen logo -->
+        <img src="pictures/Caravanhallen_logo_ny_skugga-000021a9-1920w.webp"
+             alt="Caravanhallen"
+             class="h-12 sm:h-14 mx-auto mb-8 opacity-90">
         <div class="inline-flex items-center gap-2 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="case.badge">Kundcase</div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" data-i18n="case.title">Se hur Caravanhallen använder Voixin</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" data-i18n="case.title">Se hur Caravanhallen använder Voxlor</h2>
         <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="case.body">Caravanhallen är Skandinaviens ledande husbilshandlare med anläggningar i Södertälje och Haninge. De kopplade sitt affärssystem direkt till Jessica — som nu svarar på alla inkommande samtal dygnet runt.</p>
+      </div>
+
+      <!-- Haninge store photo -->
+      <div class="mb-12 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+        <img src="pictures/Butik_caravanhallen_haninge.webp"
+             alt="Caravanhallen Haninge"
+             class="w-full h-56 sm:h-72 object-cover">
       </div>
 
       <!-- KPIs -->
@@ -762,12 +724,23 @@
       <div class="max-w-2xl mx-auto border-l-4 border-cyan-500 pl-6">
         <p class="text-white text-lg sm:text-xl font-medium leading-relaxed italic mb-4" data-i18n="case.quote">"Innan Jessica hade vi ingen aning om hur många samtal vi missade efter stängning. Nu ser vi det svart på vitt — och rapporterna varje morgon visar exakt vilka kunder vi borde ringa tillbaka."</p>
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full gradient-bg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">OL</div>
+          <img src="pictures/OscarLindgren_TJ067-400h.webp"
+               alt="Oskar Lindgren"
+               class="w-9 h-9 rounded-full object-cover object-top flex-shrink-0">
           <div>
             <div class="text-white font-semibold text-sm" data-i18n="case.quote.author">Oskar Lindgren</div>
             <div class="text-gray-400 text-xs" data-i18n="case.quote.role">Försäljningschef, Caravanhallen</div>
           </div>
         </div>
+      </div>
+
+      <!-- Link to full case study -->
+      <div class="text-center mt-10">
+        <a href="/case/caravanhallen"
+           class="inline-flex items-center gap-2 border border-cyan-500/40 hover:border-cyan-400 text-cyan-400 hover:text-cyan-300 font-semibold text-sm px-6 py-3 rounded-full transition-all"
+           data-i18n="case.caseLink">
+          Läs hela kundcaset →
+        </a>
       </div>
 
     </div>
@@ -829,7 +802,9 @@
           "Rapporterna har förändrat hur vi jobbar. Vi ser vilka kunder som ringer upprepade gånger och kan följa upp proaktivt — innan de hinner ringa en konkurrent."
         </blockquote>
         <div class="flex items-center justify-center gap-3">
-          <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white font-bold text-sm">OL</div>
+          <img src="pictures/OscarLindgren_TJ067-400h.webp"
+               alt="Oskar Lindgren"
+               class="w-10 h-10 rounded-full object-cover object-top">
           <div class="text-left">
             <div class="text-sm font-bold text-gray-900" data-i18n="insights.author">Oskar Lindgren</div>
             <div class="text-xs text-gray-500" data-i18n="insights.role">Försäljningschef, Caravanhallen</div>
@@ -839,7 +814,7 @@
 
       <!-- CTA button -->
       <div class="text-center">
-        <a href="insights-v4.html" class="inline-flex items-center gap-2 btn-gradient text-white font-semibold px-6 py-3 rounded-full shadow-md text-sm" data-i18n="insights.cta">
+        <a href="/insights" class="inline-flex items-center gap-2 btn-gradient text-white font-semibold px-6 py-3 rounded-full shadow-md text-sm" data-i18n="insights.cta">
           Utforska alla insikter Jessica genererar →
         </a>
       </div>
@@ -852,9 +827,9 @@
     <div class="max-w-4xl mx-auto">
 
       <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 text-cyan-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="how.badge">Hur Voixin fungerar</div>
+        <div class="inline-flex items-center gap-2 text-cyan-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="how.badge">Hur Voxlor fungerar</div>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="how.title">Från signering till lansering på en vecka</h2>
-        <p class="text-gray-500 text-lg" data-i18n="how.sub">Voixin sköter hela uppkopplingen. Du bidrar med data — vi levererar din röstassistent.</p>
+        <p class="text-gray-500 text-lg" data-i18n="how.sub">Voxlor sköter hela uppkopplingen. Du bidrar med data — vi levererar din röstassistent.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 relative">
@@ -905,7 +880,6 @@
 
         <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
           <div class="w-10 h-10 rounded-xl icon-cyan flex items-center justify-center mb-3">
-            <!-- Motorhome icon -->
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
             </svg>
@@ -1036,7 +1010,7 @@
           </div>
           <h3 class="text-white font-bold text-lg mb-2" data-i18n="contact.mail.title">Skicka e-post</h3>
           <p class="text-white/70 text-sm leading-relaxed mb-5" data-i18n="contact.mail.body">Beskriv vad ni behöver — vi svarar inom 24 timmar.</p>
-          <a href="mailto:hello@voixin.com?subject=Intresseanmälan Voixin" class="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-xl hover:opacity-90 transition-opacity" data-i18n="contact.mail.cta">Öppna e-post</a>
+          <a href="mailto:hello@Voxlor.com?subject=Intresseanmälan Voxlor" class="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-xl hover:opacity-90 transition-opacity" data-i18n="contact.mail.cta">Öppna e-post</a>
         </div>
 
         <!-- Card 2: Ring Jessica -->
@@ -1061,7 +1035,7 @@
           </div>
           <h3 class="text-white font-bold text-lg mb-2" data-i18n="contact.direct.title">Skriv direkt</h3>
           <p class="text-white/70 text-sm leading-relaxed mb-5" data-i18n="contact.direct.body">Maila oss när som helst.</p>
-          <a href="mailto:hello@voixin.com" class="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-xl hover:opacity-90 transition-opacity" data-i18n="contact.email">hello@voixin.com</a>
+          <a href="mailto:hello@Voxlor.com" class="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-xl hover:opacity-90 transition-opacity" data-i18n="contact.email">hello@Voxlor.com</a>
         </div>
 
       </div>
@@ -1069,46 +1043,7 @@
     </div>
   </section>
 
-  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
-  <footer class="bg-gray-950 text-gray-400 py-12 px-4">
-    <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-8">
-
-      <!-- Brand — colored logo on dark bg -->
-      <div>
-        <a href="#" class="inline-flex items-center mb-3">
-          <img src="logo/Voixin-logo-tansp-3.png" alt="Voixin" class="h-8 w-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <span class="hidden text-xl font-black gradient-text">Voixin</span>
-        </a>
-        <p class="text-sm leading-relaxed" data-i18n="footer.tagline">Jessica, din AI-röstassistent — powered by Voixin.</p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <div class="text-white font-semibold text-sm mb-3" data-i18n="footer.links">Länkar</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#features" class="hover:text-white transition-colors" data-i18n="nav.features">Funktioner</a></li>
-          <li><a href="#how"      class="hover:text-white transition-colors" data-i18n="nav.how">Hur det fungerar</a></li>
-          <li><a href="#pricing"  class="hover:text-white transition-colors" data-i18n="nav.pricing">Priser</a></li>
-          <li><a href="#contact"  class="hover:text-white transition-colors" data-i18n="nav.contact">Kontakt</a></li>
-          <li><a href="demo-v5.html" class="hover:text-white transition-colors" data-i18n="nav.demo">Demo</a></li>
-          <li><a href="insights-v4.html" class="hover:text-white transition-colors" data-i18n="nav.insights">Insikter</a></li>
-        </ul>
-      </div>
-
-      <!-- Legal -->
-      <div>
-        <div class="text-white font-semibold text-sm mb-3" data-i18n="footer.legal">Legal</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.privacy">Integritetspolicy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.terms">Användarvillkor</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-gray-800 text-xs text-center" data-i18n="footer.copy">
-      © 2026 Voixin. Alla rättigheter förbehållna.
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
 </body>
 </html>

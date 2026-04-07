@@ -213,6 +213,17 @@
         'ind.i4.title': 'Fastighet & Mäklare',
         'ind.i4.body':  'Objektfrågor, visningsbokningar och kontakthantering via röst.',
 
+        // ROI
+        'roi.badge':     'Affärsvärde',
+        'roi.title':     'Från data till affärer',
+        'roi.sub':       'Voxlor förvandlar Jessicas samtalsdata till konkreta affärsmöjligheter — och frigör din personals tid.',
+        'roi.1.title':   'Hitta dolda leads',
+        'roi.1.body':    'Kunder som frågar om fordon men inte köper flaggas som varma leads — synliga i dashboard och morgonrapporten.',
+        'roi.2.title':   'Missa aldrig en uppföljning',
+        'roi.2.body':    'Återkommande kunder och öppna ärenden identifieras automatiskt för proaktiv uppföljning.',
+        'roi.3.title':   'Spara tid och pengar',
+        'roi.3.body':    'Varje samtal Jessica hanterar sparar din personal 4–8 minuter. Med 50 samtal per dag blir det 3–6 timmars frigjord tid — varje dag.',
+
         // Pricing
         'pricing.badge':       'Prissättning',
         'pricing.title':       'Enkel, transparent prissättning',
@@ -276,9 +287,14 @@
         'ins.2.body':     'Dagliga och veckovisa e-postrapporter med KPI:er, trender, leads och rekommendationer.',
         'ins.3.title':    'Lead-identifiering',
         'ins.3.body':     'Återkommande kunder flaggas automatiskt. Verkstadskunder som ringer identifieras som merförsäljningsmöjligheter.',
-        'insights.quote': '"Rapporterna har förändrat hur vi jobbar. Vi ser vilka kunder som ringer upprepade gånger och kan följa upp proaktivt — innan de hinner ringa en konkurrent."',
-        'insights.author':'Oskar Lindgren',
-        'insights.role':  'Försäljningschef, Caravanhallen',
+        'insights.kpi1.val':   '3–6h',
+        'insights.kpi1.label': 'sparad personaltid per dag',
+        'insights.kpi2.val':   '89%',
+        'insights.kpi2.label': 'lösta utan vidare',
+        'insights.kpi3.val':   '2x',
+        'insights.kpi3.label': 'rapporter per dag',
+        'insights.kpi4.val':   '40+',
+        'insights.kpi4.label': 'datapunkter per samtal',
         'insights.cta':   'Utforska alla insikter Jessica genererar →',
 
         // Footer
@@ -387,6 +403,17 @@
         'ind.i4.title': 'Real Estate & Brokers',
         'ind.i4.body':  'Property inquiries, viewing bookings and contact management via voice.',
 
+        // ROI
+        'roi.badge':     'Business value',
+        'roi.title':     'From data to deals',
+        'roi.sub':       'Voxlor transforms Jessica\'s call data into concrete business opportunities — and frees up your staff\'s time.',
+        'roi.1.title':   'Find hidden leads',
+        'roi.1.body':    'Customers who ask about vehicles but don\'t buy are flagged as warm leads — visible in the dashboard and morning report.',
+        'roi.2.title':   'Never miss a follow-up',
+        'roi.2.body':    'Returning customers and open cases are identified automatically for proactive follow-up.',
+        'roi.3.title':   'Save time and money',
+        'roi.3.body':    'Every call Jessica handles saves your staff 4–8 minutes. With 50 calls per day, that\'s 3–6 hours of freed-up time — every day.',
+
         // Pricing
         'pricing.badge':       'Pricing',
         'pricing.title':       'Simple, transparent pricing',
@@ -450,9 +477,14 @@
         'ins.2.body':     'Daily and weekly email reports with KPIs, trends, leads and recommendations.',
         'ins.3.title':    'Lead identification',
         'ins.3.body':     'Returning customers are flagged automatically. Workshop callers are identified as upsell opportunities.',
-        'insights.quote': '"The reports have changed how we work. We can see which customers call repeatedly and follow up proactively — before they call a competitor."',
-        'insights.author':'Oskar Lindgren',
-        'insights.role':  'Sales Manager, Caravanhallen',
+        'insights.kpi1.val':   '3–6h',
+        'insights.kpi1.label': 'staff time saved per day',
+        'insights.kpi2.val':   '89%',
+        'insights.kpi2.label': 'resolved without transfer',
+        'insights.kpi3.val':   '2x',
+        'insights.kpi3.label': 'reports per day',
+        'insights.kpi4.val':   '40+',
+        'insights.kpi4.label': 'data points per call',
         'insights.cta':   'Explore all the insights Jessica generates →',
 
         // Footer
@@ -683,6 +715,85 @@
     </div>
   </section>
 
+  <!-- ── 05b Data & insikter ────────────────────────────────────────────── -->
+  <section id="insights" class="py-20 sm:py-24 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-teal-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="insights.badge">Data & insikter</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="insights.title">Varje samtal ger dig affärsintelligens</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="insights.sub">Jessica loggar, klassificerar och analyserar alla samtal automatiskt — och levererar insikter direkt till din inbox.</p>
+      </div>
+
+      <!-- 3-column cards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-14">
+
+        <!-- Card 1: Live Dashboard -->
+        <div class="feature-card bg-gray-50 border border-gray-100 rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-xl icon-cyan flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-base mb-2" data-i18n="ins.1.title">Live Dashboard</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="ins.1.body">Samtalsvolym, ämnesfördelning, kostnadsbesparingar och varma leads — allt uppdateras i realtid.</p>
+        </div>
+
+        <!-- Card 2: Automatiska rapporter -->
+        <div class="feature-card bg-gray-50 border border-gray-100 rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-xl icon-mag flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-base mb-2" data-i18n="ins.2.title">Automatiska rapporter</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="ins.2.body">Dagliga och veckovisa e-postrapporter med KPI:er, trender, leads och rekommendationer.</p>
+        </div>
+
+        <!-- Card 3: Lead-identifiering -->
+        <div class="feature-card bg-gray-50 border border-gray-100 rounded-2xl p-6">
+          <div class="w-11 h-11 rounded-xl icon-teal flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-base mb-2" data-i18n="ins.3.title">Lead-identifiering</h3>
+          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="ins.3.body">Återkommande kunder flaggas automatiskt. Verkstadskunder som ringer identifieras som merförsäljningsmöjligheter.</p>
+        </div>
+
+      </div>
+
+      <!-- KPI bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black gradient-text mb-1" data-i18n="insights.kpi1.val">3–6h</div>
+          <div class="text-xs text-gray-500 font-medium" data-i18n="insights.kpi1.label">sparad personaltid per dag</div>
+        </div>
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black gradient-text mb-1" data-i18n="insights.kpi2.val">89%</div>
+          <div class="text-xs text-gray-500 font-medium" data-i18n="insights.kpi2.label">lösta utan vidare</div>
+        </div>
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black gradient-text mb-1" data-i18n="insights.kpi3.val">2x</div>
+          <div class="text-xs text-gray-500 font-medium" data-i18n="insights.kpi3.label">rapporter per dag</div>
+        </div>
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-5 text-center">
+          <div class="text-3xl font-black gradient-text mb-1" data-i18n="insights.kpi4.val">40+</div>
+          <div class="text-xs text-gray-500 font-medium" data-i18n="insights.kpi4.label">datapunkter per samtal</div>
+        </div>
+      </div>
+
+      <!-- CTA button -->
+      <div class="text-center">
+        <a href="/insights" class="inline-flex items-center gap-2 btn-gradient text-white font-semibold px-6 py-3 rounded-full shadow-md text-sm" data-i18n="insights.cta">
+          Utforska alla insikter Jessica genererar →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── 06 Caravanhallen Case ───────────────────────────────────────────── -->
   <section class="dark-gradient py-20 sm:py-24 px-4">
     <div class="max-w-5xl mx-auto">
@@ -740,81 +851,6 @@
            class="inline-flex items-center gap-2 border border-cyan-500/40 hover:border-cyan-400 text-cyan-400 hover:text-cyan-300 font-semibold text-sm px-6 py-3 rounded-full transition-all"
            data-i18n="case.caseLink">
           Läs hela kundcaset →
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── 06b Data & insikter ────────────────────────────────────────────── -->
-  <section id="insights" class="py-20 sm:py-24 px-4 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-
-      <!-- Header -->
-      <div class="text-center mb-14">
-        <div class="inline-flex items-center gap-2 text-teal-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="insights.badge">Data & insikter</div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="insights.title">Varje samtal ger dig affärsintelligens</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="insights.sub">Jessica loggar, klassificerar och analyserar alla samtal automatiskt — och levererar insikter direkt till din inbox.</p>
-      </div>
-
-      <!-- 3-column cards -->
-      <div class="grid md:grid-cols-3 gap-6 mb-14">
-
-        <!-- Card 1: Live Dashboard -->
-        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-11 h-11 rounded-xl icon-cyan flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 text-base mb-2" data-i18n="ins.1.title">Live Dashboard</h3>
-          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="ins.1.body">Samtalsvolym, ämnesfördelning, kostnadsbesparingar och varma leads — allt uppdateras i realtid.</p>
-        </div>
-
-        <!-- Card 2: Automatiska rapporter -->
-        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-11 h-11 rounded-xl icon-mag flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 text-base mb-2" data-i18n="ins.2.title">Automatiska rapporter</h3>
-          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="ins.2.body">Dagliga och veckovisa e-postrapporter med KPI:er, trender, leads och rekommendationer.</p>
-        </div>
-
-        <!-- Card 3: Lead-identifiering -->
-        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-          <div class="w-11 h-11 rounded-xl icon-teal flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 text-base mb-2" data-i18n="ins.3.title">Lead-identifiering</h3>
-          <p class="text-sm text-gray-500 leading-relaxed" data-i18n="ins.3.body">Återkommande kunder flaggas automatiskt. Verkstadskunder som ringer identifieras som merförsäljningsmöjligheter.</p>
-        </div>
-
-      </div>
-
-      <!-- Testimony block -->
-      <div class="flex flex-col md:flex-row items-center gap-8 max-w-3xl mx-auto mt-12 mb-10">
-        <!-- Person -->
-        <div class="flex flex-col items-center text-center flex-shrink-0">
-          <img src="pictures/OscarLindgren_TJ067-400h.webp"
-               alt="Oskar Lindgren"
-               class="w-44 h-44 rounded-full object-cover object-top shadow-md mb-4">
-          <div class="text-sm font-bold text-gray-900" data-i18n="insights.author">Oskar Lindgren</div>
-          <div class="text-xs text-gray-500" data-i18n="insights.role">Försäljningschef, Caravanhallen</div>
-        </div>
-        <!-- Citat -->
-        <blockquote class="text-gray-700 text-lg font-medium leading-relaxed italic text-left" data-i18n="insights.quote">
-          "Rapporterna har förändrat hur vi jobbar. Vi ser vilka kunder som ringer upprepade gånger och kan följa upp proaktivt — innan de hinner ringa en konkurrent."
-        </blockquote>
-      </div>
-
-      <!-- CTA button -->
-      <div class="text-center">
-        <a href="/insights" class="inline-flex items-center gap-2 btn-gradient text-white font-semibold px-6 py-3 rounded-full shadow-md text-sm" data-i18n="insights.cta">
-          Utforska alla insikter Jessica genererar →
         </a>
       </div>
 
@@ -921,8 +957,54 @@
     </div>
   </section>
 
+  <!-- ── 08b Affärsvärde / ROI ─────────────────────────────────────────── -->
+  <section class="py-20 sm:py-24 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-emerald-600 text-xs font-semibold uppercase tracking-widest mb-3" data-i18n="roi.badge">Affärsvärde</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="roi.title">Från data till affärer</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="roi.sub">Voxlor förvandlar Jessicas samtalsdata till konkreta affärsmöjligheter — och frigör din personals tid.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-7">
+          <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2" data-i18n="roi.1.title">Hitta dolda leads</h3>
+          <p class="text-sm text-gray-600 leading-relaxed" data-i18n="roi.1.body">Kunder som frågar om fordon men inte köper flaggas som varma leads — synliga i dashboard och morgonrapporten.</p>
+        </div>
+
+        <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-7">
+          <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2" data-i18n="roi.2.title">Missa aldrig en uppföljning</h3>
+          <p class="text-sm text-gray-600 leading-relaxed" data-i18n="roi.2.body">Återkommande kunder och öppna ärenden identifieras automatiskt för proaktiv uppföljning.</p>
+        </div>
+
+        <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-7">
+          <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2" data-i18n="roi.3.title">Spara tid och pengar</h3>
+          <p class="text-sm text-gray-600 leading-relaxed" data-i18n="roi.3.body">Varje samtal Jessica hanterar sparar din personal 4–8 minuter. Med 50 samtal per dag blir det 3–6 timmars frigjord tid — varje dag.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── 09 Prissättning ────────────────────────────────────────────────── -->
-  <section id="pricing" class="py-20 sm:py-24 px-4 bg-white">
+  <section id="pricing" class="py-20 sm:py-24 px-4 bg-gray-50">
     <div class="max-w-5xl mx-auto">
 
       <div class="text-center mb-14">

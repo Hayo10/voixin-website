@@ -1333,7 +1333,12 @@
   <!-- Video Modal -->
   <div id="video-modal">
     <button id="modal-close" aria-label="Stäng video">&times;</button>
-    <video id="video-modal-video" controls style="cursor: pointer;"></video>
+    <div style="position: relative; display: inline-block;">
+      <video id="video-modal-video" controls style="cursor: pointer;"></video>
+      <button id="modal-mute-btn" aria-label="Slå av/på ljud" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.5); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: background 0.2s; z-index: 10;">
+        🔊
+      </button>
+    </div>
   </div>
 
   <script>
@@ -1344,6 +1349,22 @@
     const modal = document.getElementById('video-modal');
     const modalVideo = document.getElementById('video-modal-video');
     const modalClose = document.getElementById('modal-close');
+    const modalMuteBtn = document.getElementById('modal-mute-btn');
+
+    // Update mute button text
+    function updateMuteButton() {
+      modalMuteBtn.textContent = modalVideo.muted ? '🔇' : '🔊';
+    }
+
+    // Mute button toggle
+    modalMuteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      modalVideo.muted = !modalVideo.muted;
+      updateMuteButton();
+    });
+
+    // Update mute button when video muted state changes
+    modalVideo.addEventListener('volumechange', updateMuteButton);
 
     // Featured video: click play button
     if (featuredPlayBtn) {
@@ -1419,6 +1440,7 @@
       modalVideo.src = src;
       modalVideo.controls = true;
       modalVideo.muted = false;  // Enable sound in modal
+      updateMuteButton();  // Update mute button icon
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
 

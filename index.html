@@ -796,7 +796,7 @@
       <!-- Grid videos (2-4 per row, responsive) -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         <!-- Video 2 -->
-        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/2-AI-telefonist%20och%20telef%C3%B6nv%C3%A4xel-v2.mp4" data-video-title="AI-telefonist som en telefonväxel">
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/2-AI-telefonist%20och%20telefonv%C3%A4xel-v2.mp4" data-video-title="AI-telefonist som en telefonväxel">
           <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
             <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
             <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
@@ -1375,15 +1375,26 @@
       const playBtn = card.querySelector('.video-play-btn');
 
       // Set video src lazily when card is intersected
+      let srcLoaded = false;
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !videoEl.src) {
+          if (entry.isIntersecting && !srcLoaded) {
             videoEl.src = src;
             videoEl.load();
+            srcLoaded = true;
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.05 });
       observer.observe(card);
+
+      // Also preload src on first hover to be safe
+      card.addEventListener('mouseenter', () => {
+        if (!srcLoaded) {
+          videoEl.src = src;
+          videoEl.load();
+          srcLoaded = true;
+        }
+      }, { once: false });
 
       // Hover: play muted
       card.addEventListener('mouseenter', () => {
@@ -1407,6 +1418,7 @@
     function openVideoModal(src, title) {
       modalVideo.src = src;
       modalVideo.controls = true;
+      modalVideo.muted = false;  // Enable sound in modal
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
 

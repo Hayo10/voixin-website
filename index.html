@@ -771,22 +771,18 @@
       </div>
 
       <!-- Featured video (Video 1) -->
-      <div class="mb-12 rounded-3xl overflow-hidden bg-gray-900 shadow-xl hover:shadow-2xl transition-shadow">
+      <div class="mb-12 rounded-3xl overflow-hidden bg-gray-900 shadow-xl hover:shadow-2xl transition-shadow featured-video-container" style="cursor: pointer;">
         <div class="relative w-full" style="aspect-ratio: 16/9; background: #000;">
           <video
             id="featured-video"
             src="video/1-Introduktion%20Vad%20%C3%A4r%20en%20AI-telefonist-v3.mp4"
             muted
+            autoplay
             loop
             playsinline
             preload="metadata"
             class="w-full h-full object-cover"
           ></video>
-          <button id="featured-play-btn" class="absolute inset-0 flex items-center justify-center opacity-100 hover:opacity-75 transition-opacity" style="cursor: pointer;">
-            <svg class="w-20 h-20 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-            </svg>
-          </button>
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
             <h3 class="text-white text-xl font-bold" data-i18n="video.1.title">Introduktion: Vad är en AI-telefonist?</h3>
           </div>
@@ -1344,7 +1340,7 @@
   <script>
     // ─── Video Gallery Logic ───────────────────────────────────────────────
     const featuredVideo = document.getElementById('featured-video');
-    const featuredPlayBtn = document.getElementById('featured-play-btn');
+    const featuredVideoContainer = document.querySelector('.featured-video-container');
     const videoCards = document.querySelectorAll('.video-card');
     const modal = document.getElementById('video-modal');
     const modalVideo = document.getElementById('video-modal-video');
@@ -1366,10 +1362,9 @@
     // Update mute button when video muted state changes
     modalVideo.addEventListener('volumechange', updateMuteButton);
 
-    // Featured video: click play button to open modal with sound
-    if (featuredPlayBtn) {
-      featuredPlayBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+    // Featured video: click container to open modal with sound
+    if (featuredVideoContainer) {
+      featuredVideoContainer.addEventListener('click', () => {
         const videoSrc = 'video/1-Introduktion%20Vad%20%C3%A4r%20en%20AI-telefonist-v3.mp4';
         const videoTitle = 'Introduktion: Vad är en AI-telefonist?';
         openVideoModal(videoSrc, videoTitle);

@@ -110,6 +110,51 @@
     .icon-mag   { background: rgba(192,38,211,0.10); color: #a21caf; }
     .icon-teal  { background: rgba(20,184,166,0.12); color: #0f766e; }
     .icon-amber { background: rgba(245,158,11,0.12); color: #b45309; }
+
+    /* Video modal */
+    #video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #video-modal.active {
+      display: flex;
+    }
+    #video-modal-video {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      background: #000;
+    }
+    #modal-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 51;
+    }
+    #modal-close:hover { background: rgba(255,255,255,0.2); }
+
+    /* Lazy load videos on hover */
+    .video-card video {
+      transition: opacity 0.3s;
+    }
   </style>
 
   <script>
@@ -715,6 +760,165 @@
     </div>
   </section>
 
+  <!-- ── 05a Se Jessica i action (Video gallery) ───────────────────────── -->
+  <section id="videos" class="py-20 sm:py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4" data-i18n="videos.title">Se vad Jessica kan göra</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto" data-i18n="videos.sub">Nio korta klipp – varje film visar en specifik förmåga</p>
+      </div>
+
+      <!-- Featured video (Video 1) -->
+      <div class="mb-12 rounded-3xl overflow-hidden bg-gray-900 shadow-xl hover:shadow-2xl transition-shadow">
+        <div class="relative w-full" style="aspect-ratio: 16/9; background: #000;">
+          <video
+            id="featured-video"
+            src="video/1-Introduktion%20Vad%20%C3%A4r%20en%20AI-telefonist-v3.mp4"
+            muted
+            loop
+            playsinline
+            preload="none"
+            class="w-full h-full object-cover"
+          ></video>
+          <button id="featured-play-btn" class="absolute inset-0 flex items-center justify-center opacity-100 hover:opacity-75 transition-opacity" style="cursor: pointer;">
+            <svg class="w-20 h-20 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+            </svg>
+          </button>
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+            <h3 class="text-white text-xl font-bold" data-i18n="video.1.title">Introduktion: Vad är en AI-telefonist?</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid videos (2-4 per row, responsive) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Video 2 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/2-AI-telefonist%20och%20telef%C3%B6nv%C3%A4xel-v2.mp4" data-video-title="AI-telefonist som en telefonväxel">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.2.title">AI-telefonist som en telefonväxel</h4>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/3-Kunskapsbank%20%26%20Realtidsinfo.mp4" data-video-title="Kunskapsbank & Realtidsinfo">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.3.title">Kunskapsbank & Realtidsinfo</h4>
+          </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/4-Prisf%C3%B6rslag%20%26%20F%C3%B6rs%C3%A4ljning.mp4" data-video-title="Prisförslag & Försäljning">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.4.title">Prisförslag & Försäljning</h4>
+          </div>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/5-Bokningar%20%26%20Kalenderintegration.mp4" data-video-title="Bokningar & Kalenderintegration">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.5.title">Bokningar & Kalenderintegration</h4>
+          </div>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/6-Kapacitet%20100-tals%20samtal%20247.mp4" data-video-title="Kapacitet: 100-tals samtal 24/7">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.6.title">Kapacitet: 100-tals samtal 24/7</h4>
+          </div>
+        </div>
+
+        <!-- Video 7 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/7-F%C3%B6retagssystem%20och%20kunskap.mp4" data-video-title="Företagssystem och kunskap">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.7.title">Företagssystem och kunskap</h4>
+          </div>
+        </div>
+
+        <!-- Video 8 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/8-integration%20och%20branschexpertis.mp4" data-video-title="Integration och branschexpertis">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.8.title">Integration och branschexpertis</h4>
+          </div>
+        </div>
+
+        <!-- Video 9 -->
+        <div class="video-card rounded-2xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-lg transition-shadow" data-video-src="video/9-%20Data%20Insikter%20%26%20Analys.mp4" data-video-title="Data Insikter & Analys">
+          <div class="relative w-full" style="aspect-ratio: 1/1; background: #000;">
+            <video muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
+            <button class="video-play-btn absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="cursor: pointer; background: rgba(0,0,0,0.3);">
+              <svg class="w-12 h-12 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="p-3 bg-white">
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-cyan-600 transition-colors" data-i18n="video.9.title">Data Insikter & Analys</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── 05b Data & insikter ────────────────────────────────────────────── -->
   <section id="insights" class="py-20 sm:py-24 px-4 bg-white">
     <div class="max-w-5xl mx-auto">
@@ -1125,6 +1329,111 @@
   </section>
 
   <div id="site-footer"></div>
+
+  <!-- Video Modal -->
+  <div id="video-modal">
+    <button id="modal-close" aria-label="Stäng video">&times;</button>
+    <video id="video-modal-video" controls style="cursor: pointer;"></video>
+  </div>
+
+  <script>
+    // ─── Video Gallery Logic ───────────────────────────────────────────────
+    const featuredVideo = document.getElementById('featured-video');
+    const featuredPlayBtn = document.getElementById('featured-play-btn');
+    const videoCards = document.querySelectorAll('.video-card');
+    const modal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('video-modal-video');
+    const modalClose = document.getElementById('modal-close');
+
+    // Featured video: click play button
+    if (featuredPlayBtn) {
+      featuredPlayBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (featuredVideo.paused) {
+          featuredVideo.play();
+          featuredPlayBtn.style.opacity = '0';
+        } else {
+          featuredVideo.pause();
+          featuredPlayBtn.style.opacity = '1';
+        }
+      });
+
+      // Auto-hide play button when playing
+      featuredVideo.addEventListener('play', () => {
+        featuredPlayBtn.style.opacity = '0';
+      });
+      featuredVideo.addEventListener('pause', () => {
+        featuredPlayBtn.style.opacity = '1';
+      });
+    }
+
+    // Grid videos: hover to autoplay muted, click to open modal with sound
+    videoCards.forEach(card => {
+      const videoEl = card.querySelector('video');
+      const src = card.getAttribute('data-video-src');
+      const title = card.getAttribute('data-video-title');
+      const playBtn = card.querySelector('.video-play-btn');
+
+      // Set video src lazily when card is intersected
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !videoEl.src) {
+            videoEl.src = src;
+            videoEl.load();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(card);
+
+      // Hover: play muted
+      card.addEventListener('mouseenter', () => {
+        if (videoEl.src && videoEl.paused) {
+          videoEl.play().catch(e => console.log('Autoplay blocked:', e));
+        }
+      });
+
+      // Click: open modal
+      playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openVideoModal(src, title);
+      });
+
+      card.addEventListener('click', () => {
+        openVideoModal(src, title);
+      });
+    });
+
+    // Modal: open and play with sound
+    function openVideoModal(src, title) {
+      modalVideo.src = src;
+      modalVideo.controls = true;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Auto-play after a brief delay to ensure video is loaded
+      setTimeout(() => {
+        modalVideo.play().catch(e => console.log('Modal play failed:', e));
+      }, 100);
+    }
+
+    // Modal: close
+    function closeVideoModal() {
+      modal.classList.remove('active');
+      modalVideo.pause();
+      modalVideo.src = '';
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeVideoModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeVideoModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeVideoModal();
+      }
+    });
+  </script>
 
 </body>
 </html>

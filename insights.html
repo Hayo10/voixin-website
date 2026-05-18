@@ -274,21 +274,44 @@
 
   <!-- ── 02 Hero ─────────────────────────────────────────────────────────── -->
   <section class="hero-bg py-20 sm:py-28 px-4">
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-      <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 text-teal-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span>
-        <span data-i18n="hero.badge">Affärsintelligens från varje samtal</span>
+        <!-- Left: Text content -->
+        <div class="text-center md:text-left">
+
+          <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 text-teal-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span>
+            <span data-i18n="hero.badge">Affärsintelligens från varje samtal</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight mb-6">
+            <span data-i18n="hero.title">Jessica pratar — Voxlor ger dig insikterna</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-gray-500 leading-relaxed" data-i18n="hero.sub">
+            Varje samtal loggas, klassificeras och analyseras automatiskt. Du får live-dashboards, dagliga rapporter och lead-identifiering — utan att lyfta ett finger.
+          </p>
+
+        </div>
+
+        <!-- Right: Featured video (Video 9) -->
+        <div class="hidden md:block">
+          <div class="rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow" style="aspect-ratio: 1/1; background: #000;">
+            <video
+              id="insights-hero-video"
+              src="video/9-%20Data%20Insikter%20%26%20Analys.mp4"
+              muted
+              autoplay
+              loop
+              playsinline
+              preload="none"
+              class="w-full h-full object-cover"
+            ></video>
+          </div>
+        </div>
+
       </div>
-
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight mb-6">
-        <span data-i18n="hero.title">Jessica pratar — Voxlor ger dig insikterna</span>
-      </h1>
-
-      <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed" data-i18n="hero.sub">
-        Varje samtal loggas, klassificeras och analyseras automatiskt. Du får live-dashboards, dagliga rapporter och lead-identifiering — utan att lyfta ett finger.
-      </p>
-
     </div>
   </section>
 

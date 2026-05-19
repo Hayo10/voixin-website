@@ -155,6 +155,43 @@
     .video-card video {
       transition: opacity 0.3s;
     }
+
+    /* ── Hero Call Card ──────────────────────────────────────────────── */
+    @keyframes ring-out {
+      0%   { transform: scale(1);   opacity: 0.55; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+    @keyframes eq-bounce {
+      0%, 100% { transform: scaleY(0.12); }
+      50%       { transform: scaleY(1); }
+    }
+    @keyframes live-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+    .hero-call-card {
+      background: linear-gradient(150deg, #0b1829 0%, #130a28 100%);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      padding: 28px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow:
+        0 30px 70px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(0,200,224,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .call-ring { position: absolute; inset: -18px; border-radius: 50%; }
+    .call-ring-1 { background: radial-gradient(circle, rgba(0,200,224,0.25), rgba(192,38,211,0.2)); animation: ring-out 2.6s ease-out infinite 0s; }
+    .call-ring-2 { background: radial-gradient(circle, rgba(0,200,224,0.18), rgba(192,38,211,0.14)); animation: ring-out 2.6s ease-out infinite 0.87s; }
+    .call-ring-3 { background: radial-gradient(circle, rgba(0,200,224,0.1), rgba(192,38,211,0.08)); animation: ring-out 2.6s ease-out infinite 1.73s; }
+    .eq-bar {
+      width: 3px;
+      background: linear-gradient(to top, #00c8e0 0%, #c026d3 100%);
+      border-radius: 2px;
+      transform-origin: bottom center;
+    }
+    .hero-msg { transition: opacity 0.5s ease, transform 0.5s ease; }
   </style>
 
   <script>
@@ -583,44 +620,121 @@
 
   <!-- ── 02 Hero ─────────────────────────────────────────────────────────── -->
   <section class="hero-bg py-20 sm:py-28 px-4">
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 bg-cyan-50 border border-cyan-100 text-cyan-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
-        <span data-i18n="hero.badge">Live AI-röstassistent för fordonsbranschen</span>
-      </div>
+        <!-- Left: Text content -->
+        <div class="text-center md:text-left order-1">
 
-      <!-- Headline -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight mb-6">
-        <span data-i18n="hero.title">AI som svarar i telefon —<br>så att du kan fokusera på att sälja</span>
-      </h1>
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-cyan-50 border border-cyan-100 text-cyan-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span data-i18n="hero.badge">Live AI-röstassistent för fordonsbranschen</span>
+          </div>
 
-      <!-- Subtitle -->
-      <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero.subtitle">
-        Voxlor ger din handel en intelligent röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst dygnet runt — utan väntetid, utan missade affärer.
-      </p>
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight mb-6">
+            <span data-i18n="hero.title">AI som svarar i telefon —<br>så att du kan fokusera på att sälja</span>
+          </h1>
 
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-        <a href="tel:+46105200885" class="group flex items-center gap-3 btn-gradient text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-lg shadow-cyan-200">
-          <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-          </svg>
-          <span data-i18n="hero.cta.demo">Ring och testa live</span>
-        </a>
-        <a href="#contact" class="flex items-center gap-2 border-2 border-gray-200 hover:border-gray-400 text-gray-700 font-semibold text-base px-6 py-4 rounded-2xl transition-all">
-          <span data-i18n="hero.cta.book">Boka presentation</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
-          </svg>
-        </a>
-      </div>
+          <!-- Subtitle -->
+          <p class="text-lg sm:text-xl text-gray-500 mb-10 leading-relaxed" data-i18n="hero.subtitle">
+            Voxlor ger din handel en intelligent röstassistent som hanterar fordonsfrågor, verkstadsstatus och kundtjänst dygnet runt — utan väntetid, utan missade affärer.
+          </p>
 
-      <!-- Phone number -->
-      <div class="flex flex-col items-center gap-1">
-        <span class="text-xs font-semibold text-gray-400 tracking-widest uppercase" data-i18n="hero.phone.hint">Testa Jessica — live demo med realistiska data</span>
-        <a href="tel:+46105200885" class="text-3xl sm:text-4xl font-black text-gray-900 hover:text-cyan-600 transition-colors tracking-tight" data-i18n="hero.phone">010-520 08 85</a>
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-10">
+            <a href="tel:+46105200885" class="group flex items-center gap-3 btn-gradient text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-lg shadow-cyan-200">
+              <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span data-i18n="hero.cta.demo">Ring och testa live</span>
+            </a>
+            <a href="#contact" class="flex items-center gap-2 border-2 border-gray-200 hover:border-gray-400 text-gray-700 font-semibold text-base px-6 py-4 rounded-2xl transition-all">
+              <span data-i18n="hero.cta.book">Boka presentation</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Phone number -->
+          <div class="flex flex-col items-center md:items-start gap-1">
+            <span class="text-xs font-semibold text-gray-400 tracking-widest uppercase" data-i18n="hero.phone.hint">Testa Jessica — live demo med realistiska data</span>
+            <a href="tel:+46105200885" class="text-3xl sm:text-4xl font-black text-gray-900 hover:text-cyan-600 transition-colors tracking-tight" data-i18n="hero.phone">010-520 08 85</a>
+          </div>
+        </div>
+
+        <!-- Right: Animated call card -->
+        <div class="order-2 flex justify-center md:justify-end">
+          <div class="hero-call-card">
+
+            <!-- Card header -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;animation:live-pulse 1.8s ease-in-out infinite;"></span>
+                <span style="color:rgba(255,255,255,0.85);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">Jessica · Live</span>
+              </div>
+              <span id="hero-call-timer" style="color:rgba(255,255,255,0.35);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;">00:00</span>
+            </div>
+
+            <!-- Avatar + pulse rings -->
+            <div style="display:flex;justify-content:center;margin-bottom:18px;">
+              <div style="position:relative;width:76px;height:76px;">
+                <div class="call-ring call-ring-1"></div>
+                <div class="call-ring call-ring-2"></div>
+                <div class="call-ring call-ring-3"></div>
+                <div style="position:relative;z-index:1;width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#00c8e0,#c026d3);display:flex;align-items:center;justify-content:center;box-shadow:0 0 28px rgba(0,200,224,0.35);">
+                  <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2H3v2a9 9 0 0 0 8 8.94V23h2v-2.06A9 9 0 0 0 21 12v-2h-2z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Equalizer bars -->
+            <div style="display:flex;align-items:flex-end;justify-content:center;gap:4px;height:36px;margin-bottom:22px;">
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.65s ease-in-out infinite 0.00s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.50s ease-in-out infinite 0.08s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.80s ease-in-out infinite 0.16s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.58s ease-in-out infinite 0.24s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.72s ease-in-out infinite 0.32s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.45s ease-in-out infinite 0.40s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.88s ease-in-out infinite 0.12s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.62s ease-in-out infinite 0.20s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.55s ease-in-out infinite 0.28s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.75s ease-in-out infinite 0.36s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.68s ease-in-out infinite 0.04s;"></div>
+              <div class="eq-bar" style="height:36px;animation:eq-bounce 0.48s ease-in-out infinite 0.44s;"></div>
+            </div>
+
+            <!-- Conversation messages -->
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <!-- Customer message -->
+              <div id="hero-msg-user" class="hero-msg" style="opacity:0;transform:translateY(8px);display:flex;justify-content:flex-start;">
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:14px 14px 14px 3px;padding:10px 13px;max-width:88%;">
+                  <p id="hero-msg-user-text" style="color:rgba(255,255,255,0.65);font-size:13px;line-height:1.5;margin:0;">Jag söker en husbil under 400 000 kr...</p>
+                </div>
+              </div>
+              <!-- Jessica response -->
+              <div id="hero-msg-jessica" class="hero-msg" style="opacity:0;transform:translateY(8px);display:flex;justify-content:flex-end;">
+                <div style="background:linear-gradient(135deg,rgba(0,200,224,0.13),rgba(192,38,211,0.13));border:1px solid rgba(0,200,224,0.22);border-radius:14px 14px 3px 14px;padding:10px 13px;max-width:88%;">
+                  <p id="hero-msg-jessica-text" style="color:rgba(255,255,255,0.88);font-size:13px;line-height:1.5;margin:0;">Jag hittade <strong style="color:#67e8f9;">7 alternativ</strong> åt dig — ska jag gå igenom dem?</p>
+                </div>
+              </div>
+              <!-- Action confirmation -->
+              <div id="hero-msg-action" class="hero-msg" style="opacity:0;transform:translateY(8px);display:flex;justify-content:flex-end;">
+                <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.28);border-radius:14px 14px 3px 14px;padding:8px 12px;display:inline-flex;align-items:center;gap:6px;">
+                  <svg width="12" height="12" fill="#22c55e" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <span id="hero-msg-action-text" style="color:rgba(255,255,255,0.65);font-size:12px;font-weight:500;">Skickar lista på 7 fordon via SMS</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1450,6 +1564,87 @@
         closeVideoModal();
       }
     });
+  </script>
+
+  <!-- Hero Call Card: timer + looping conversation -->
+  <script>
+    // ── Call timer ──────────────────────────────────────────────────────────
+    let heroSeconds = 0;
+    const heroTimer = document.getElementById('hero-call-timer');
+    if (heroTimer) {
+      setInterval(() => {
+        heroSeconds++;
+        const m = String(Math.floor(heroSeconds / 60)).padStart(2, '0');
+        const s = String(heroSeconds % 60).padStart(2, '0');
+        heroTimer.textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    // ── Conversation scenarios ──────────────────────────────────────────────
+    const heroScenarios = [
+      {
+        user:    'Jag söker en husbil under 400 000 kr...',
+        jessica: 'Jag hittade <strong style="color:#67e8f9;">7 alternativ</strong> åt dig — ska jag gå igenom dem?',
+        action:  'Skickar lista på 7 fordon via SMS'
+      },
+      {
+        user:    'Hur långt har ni kommit med min Bürstner?',
+        jessica: 'Din Bürstner Lyseo är <strong style="color:#67e8f9;">klar</strong> — du hämtar imorgon kl. 09:00',
+        action:  'Bekräftelse skickas till din e-post'
+      },
+      {
+        user:    'Kan jag boka en service till nästa vecka?',
+        jessica: 'Absolut — jag har en tid <strong style="color:#67e8f9;">tisdag 27 maj kl. 08:30</strong>',
+        action:  'Bokning bekräftad — kalender skickas'
+      }
+    ];
+
+    let heroScenarioIdx = 0;
+    const msgUser    = document.getElementById('hero-msg-user');
+    const msgJessica = document.getElementById('hero-msg-jessica');
+    const msgAction  = document.getElementById('hero-msg-action');
+
+    function heroFadeOut(cb) {
+      [msgUser, msgJessica, msgAction].forEach(el => {
+        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        el.style.opacity    = '0';
+        el.style.transform  = 'translateY(-5px)';
+      });
+      setTimeout(cb, 450);
+    }
+
+    function heroShowScenario(idx) {
+      const s = heroScenarios[idx];
+      document.getElementById('hero-msg-user-text').textContent  = s.user;
+      document.getElementById('hero-msg-jessica-text').innerHTML = s.jessica;
+      document.getElementById('hero-msg-action-text').textContent = s.action;
+
+      [msgUser, msgJessica, msgAction].forEach(el => {
+        el.style.transition = 'none';
+        el.style.opacity    = '0';
+        el.style.transform  = 'translateY(10px)';
+      });
+
+      const show = (el, delay) => setTimeout(() => {
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.opacity    = '1';
+        el.style.transform  = 'translateY(0)';
+      }, delay);
+
+      show(msgUser,    150);
+      show(msgJessica, 1100);
+      show(msgAction,  2400);
+    }
+
+    if (msgUser && msgJessica && msgAction) {
+      heroShowScenario(0);
+      setInterval(() => {
+        heroFadeOut(() => {
+          heroScenarioIdx = (heroScenarioIdx + 1) % heroScenarios.length;
+          heroShowScenario(heroScenarioIdx);
+        });
+      }, 6500);
+    }
   </script>
 
 </body>
